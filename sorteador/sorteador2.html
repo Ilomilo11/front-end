@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sorteio de Números</title>
+
+    <style>
+        @keyframes backgroundAnimation {
+            0% {  background-color: #d85454; }
+            50% { background-color: #d85454; }
+            100% { background-color: #d85454; }
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container text-center mt-5">
+        <h1>Sorteio de Números</h1>
+        <h2 id="numeroSorteado" class="mt-3"></h2>
+        
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-4">
+                <input type="number" id="min" class="form-control" placeholder="Número mínimo">
+            </div>
+            <div class="col-md-4">
+                <input type="number" id="max" class="form-control" placeholder="Número máximo">
+            </div>
+        </div>
+        
+        <button class="btn btn-success btn-lg mt-3" onclick="sortear()">Sortear</button>
+    </div>
+
+    <script>
+        function sortear() {
+            let min = parseInt(document.getElementById('min').value);
+            let max = parseInt(document.getElementById('max').value);
+            
+            if (!isNaN(min) && !isNaN(max) && min < max) {
+                let sorteado = Math.floor(Math.random() * (max - min + 1)) + min;
+                document.getElementById('numeroSorteado').innerText = `Número sorteado: ${sorteado}`;
+            } else {
+                alert("Insira valores válidos! O mínimo deve ser menor que o máximo.");
+            }
+        }
+    </script>
+  </body>
+</html>

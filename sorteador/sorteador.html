@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sorteador</title>
+    <style>
+        
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+    }
+    .container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #b6b6b6;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    input, button {
+        margin: 10px;
+        padding: 10px;
+        width: 80%;
+    }
+    #resultado {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container text-center mt-5">
+        <h1>Sorteio de Números</h1>
+        <h2 id="numeroSorteado" class="mt-3"></h2>
+        
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-4">
+                <input type="number" id="min" class="form-control" placeholder="Número mínimo">
+            </div>
+            <div class="col-md-4">
+                <input type="number" id="max" class="form-control" placeholder="Número máximo">
+            </div>
+        </div>
+        
+        <button class="btn btn-success btn-lg mt-3" onclick="sortear()">Sortear</button>
+    </div>
+
+    <script>
+        function sortear() {
+            let min = parseInt(document.getElementById('min').value);
+            let max = parseInt(document.getElementById('max').value);
+            
+            if (!isNaN(min) && !isNaN(max) && min < max) {
+                let sorteado = Math.floor(Math.random() * (max - min + 1)) + min;
+                document.getElementById('numeroSorteado').innerText = `Número sorteado: ${sorteado}`;
+            } else {
+                alert("Insira valores válidos! O mínimo deve ser menor que o máximo.");
+            }
+        }
+    </script>
+  </body>
+</html>
